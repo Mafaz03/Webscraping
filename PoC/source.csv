@@ -1,0 +1,3 @@
+home_page,base_url,title,date
+https://www.constructafrica.com/,https://constructafrica.com/search/node?keys={key}&page={page}%2C0%2C0,"//*[@id=""block-mainpagecontent""]/div/ol/li[{}]/h3/a","//*[@id=""block-mainpagecontent""]/div/ol/li[{}]/p[2]/em"
+https://gambetanews.com/,https://gambetanews.com/page/{page}/?s={key},/html/body/div[1]/div/div[2]/section/main/article[{}]/header/h1/a,/html/body/div[1]/div/div[2]/section/main/article[{}]/header/div/span[1]/a/time

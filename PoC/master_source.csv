@@ -1,0 +1,4 @@
+home_page,base_url,title,date
+https://www.constructafrica.com/,https://constructafrica.com/search/node?keys={key}&page={page}%2C0%2C0,"//*[@id=""block-mainpagecontent""]/div/ol/li[{}]/h3/a","//*[@id=""block-mainpagecontent""]/div/ol/li[{}]/p[2]/em"
+https://www.worldhighways.com/ ,https://www.worldhighways.com/search?search_api_fulltext={key}&page={page},"//*[@id=""block-mdl-content""]/div/div/div[{}]/div[2]/span/div/div[1]/a","//*[@id=""block-mdl-content""]/div/div/div[{}]/div[2]/span/div/div[2]"
+https://gambetanews.com/,https://gambetanews.com/page/{page}/?s={key},/html/body/div[1]/div/div[2]/section/main/article[{}]/header/h1/a,/html/body/div[1]/div/div[2]/section/main/article[{}]/header/div/span[1]/a/time
