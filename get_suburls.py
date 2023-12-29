@@ -7,6 +7,12 @@ from tqdm import tqdm
 
 
 class WebScraper:
+    """
+    Class WebScraper
+
+    Args:
+    sub_url_size: Number of self iteration/ tree branches.
+    """
     def __init__(self, sub_url_size):
         ssl._create_default_https_context = ssl._create_unverified_context
         self.inside_urls = dict()  # Storing inside URLs as a dict for uniqueness
@@ -14,6 +20,18 @@ class WebScraper:
         self.sub_url_size = sub_url_size
 
     def get_suburls(self, urls_list):
+        """
+        Gets as many urls as mentioned by the sub_url_size.
+
+        Args:
+        urls_list: Top urls.
+
+        Returns:
+        inside_urls: [list] All available urls.
+        failed_fetch: amount of urls that couldnt be fetched due to some error.
+        sub_url_size: tree split.
+        total_size: amount of urls present in inside_urls.
+        """
         self.inside_urls[0] = urls_list
         for i in range(self.sub_url_size):
             temp_inside_urls = [] 
