@@ -15,7 +15,7 @@ from selenium.webdriver.common.by import By
 
 
 # Set your OpenAI API key
-api_key = "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"
+api_key = input("Enter api key: ")
 openai.api_key = api_key
 
 # GUI
