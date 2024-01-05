@@ -112,6 +112,7 @@ class WebScraper2:
                     self.failed_fetch += 1
             
             temp_inside_urls = [url for url in temp_inside_urls if any(keyword in url for keyword in self.keywords)]
+            temp_inside_urls = list(set(temp_inside_urls))
             self.inside_urls[i + 1] = temp_inside_urls
             
         total_size = 0
