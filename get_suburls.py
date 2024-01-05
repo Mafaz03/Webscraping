@@ -119,6 +119,8 @@ class WebScraper2:
         for i in self.inside_urls:
             total_size += len(self.inside_urls[i])
         return self.inside_urls, self.failed_fetch, self.sub_url_size, total_size
+
+
 """
 # Example Usage:
 urls_list = ["https://www.khaleejtimes.com"] # Can add as many urls as needed, keep it below 5 for faster executing
@@ -132,3 +134,23 @@ print("Splits:", len(inside_urls))
 print("Tree size:", total_size)
 
 """
+
+
+
+
+"""
+urls_list = ["https://www.khaleejtimes.com"]
+urls_list_str = ",".join(urls_list)
+
+scraper = WebScraper2(sub_url_size=4 , keywords="gaza,israel,war,hamas") # KEEP IT 1, 2 or more will result in 10000's of urls.
+                        # Integration with DB will make it faster in future, as fetching is much faster than scrapping.
+inside_urls, failed_fetch, sub_url_size, total_size = scraper.get_suburls2(urls_list_str)
+
+# print("Inside URLs:", inside_urls)
+print("Failed Fetch:", failed_fetch)
+print("Splits:", len(inside_urls))
+print("Tree size:", total_size)
+
+"""
+
+
