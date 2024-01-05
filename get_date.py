@@ -16,6 +16,7 @@ def fetch_date_from_url(url: str):
     Returns:
     formatted_date(Datetime) = date of article (if exist)
     """
+    
     try:
         html = requests.get(url).content.decode('utf-8')
         date = find_date(html)
@@ -27,12 +28,28 @@ def fetch_date_from_url(url: str):
             date_obj = datetime.strptime(date, "%Y-%m-%d")
             # Convert the datetime object into the desired format
             formatted_date = date_obj.strftime("%d-%m-%Y")
-            return formatted_date
+
+            # data={
+            #     url:url,
+            #     date:formatted_date
+            # }
+            # writeone
+            
+            return url, formatted_date
     except Exception as e:
+        
+        # data={
+            #     url:url,
+            #     date:formatted_date
+            # }
+            # writeone
+        
         print("An error occurred:", str(e))
         return None
+    
+    
 """
 ## Example Usecase:
-url = "https://timesofindia.indiatimes.com/india/young-indians-dropping-dead-icmr-now-has-answers/articleshow/105497797.cms"
-fetch_date_from_url(url = url)
+url = "https://constructionreviewonline.com/concrete/how-permanent-christmas-lights-can-transform-your-phoenix-home/"
+print(fetch_date_from_url(url = url))
 """
