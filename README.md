@@ -30,6 +30,7 @@ Implementation: Utilizes a tree traversal mechanism to control the exploration d
 
 ### Web Interface (Current State)
 Description: The current iteration of the web interface boasts an expertly crafted user experience, driven primarily by JavaScript functionalities.
+
 Implementation: Developed with a predominant focus on JavaScript to ensure an interactive and dynamic user interface. Leveraging modern JavaScript frameworks and methodologies, the interface delivers a sophisticated yet intuitive user experience. Its responsive design and seamless interaction cater to diverse user needs, providing a comprehensive platform for efficient data input and retrieval.
 ## Usage Instructions
 
