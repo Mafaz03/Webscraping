@@ -8,3 +8,4 @@ openai==0.27.0
 pymongo==4.6.0
 dotenv==0.0.5
 os
+certifi
