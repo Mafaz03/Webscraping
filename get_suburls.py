@@ -42,7 +42,7 @@ class WebScraper1:
                     if response.status_code == 200:
                         soup = BeautifulSoup(response.content, 'html.parser')
                         all_links = soup.find_all('a', href=True)
-                        excluded_domains = r'(magicbricks|play\.google|facebook\.com|twitter\.com|instagram\.com|linkedin\.com|youtube\.com|\.gov|\.org|policy|terms|buy|horoscope)'
+                        excluded_domains = r'(magicbricks|play\.google|facebook\.com|twitter\.com|instagram\.com|linkedin\.com|youtube\.com|\.gov|\.org|policy|terms|buy|horoscope|web\.whatsapp\.com)'
                         # excluded_domains will not take urls into account with these domains
                         for link in all_links:
                             href = link['href']
@@ -98,7 +98,7 @@ class WebScraper2:
                     if response.status_code == 200:
                         soup = BeautifulSoup(response.content, 'html.parser')
                         all_links = soup.find_all('a', href=True)
-                        excluded_domains = r'(magicbricks|play\.google|facebook\.com|twitter\.com|instagram\.com|linkedin\.com|youtube\.com|\.gov|\.org|policy|terms|buy|horoscope)'
+                        excluded_domains = r'(magicbricks|play\.google|facebook\.com|twitter\.com|instagram\.com|linkedin\.com|youtube\.com|\.gov|\.org|policy|terms|buy|horoscope|web\.whatsapp\.com)'
                         # excluded_domains will not take urls into account with these domains
                         for link in all_links:
                             href = link['href']
@@ -119,8 +119,6 @@ class WebScraper2:
         for i in self.inside_urls:
             total_size += len(self.inside_urls[i])
         return self.inside_urls, self.failed_fetch, self.sub_url_size, total_size
-
-
 """
 # Example Usage:
 urls_list = ["https://www.khaleejtimes.com"] # Can add as many urls as needed, keep it below 5 for faster executing
@@ -134,8 +132,6 @@ print("Splits:", len(inside_urls))
 print("Tree size:", total_size)
 
 """
-
-
 
 
 """
@@ -152,5 +148,3 @@ print("Splits:", len(inside_urls))
 print("Tree size:", total_size)
 
 """
-
-

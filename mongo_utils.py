@@ -24,16 +24,17 @@ def import_from_mongo(date_db_name:str, collection_db_name:str, columns: list) -
     collection = db[collection_db_name]
 
 
-    mongo_date_df = pd.DataFrame(collection.find()).transpose()[1:].reset_index()           # Importing all Data from Date Database collection
-    Nan_to_empty_str = mongo_date_df.fillna('')                                             # Nan to ''
-    list_of_extra_cols = list(range(Nan_to_empty_str.shape[1] - 1))                         # Extra columns caused due to mongodb 
-    Nan_to_empty_str["Date"] = np.array(Nan_to_empty_str[list_of_extra_cols]).sum(axis=1)   # Adding rows row wise
-    mongo_date_df = Nan_to_empty_str.drop(list_of_extra_cols, axis = 1)                     # Removing extra columns
-    mongo_date_df['Date'] = pd.to_datetime(mongo_date_df['Date'], dayfirst=True)            # Converting Date to Datetime
-    mongo_date_df = mongo_date_df.sort_values(by='Date', ascending=False)                   # Sorting by Date
-    mongo_date_df.columns = columns                                                         # Renaming Column name
-    mongo_date_df = mongo_date_df.dropna()                                                  # Dropping Null values from mongo (most probably not useful urls)
-    return mongo_date_df
+    mongo_df = pd.DataFrame(collection.find()).transpose()[1:].reset_index()                        # Importing all Data from Date Database collection
+    Nan_to_empty_str = mongo_df.fillna('')                                                          # Nan to ''
+    list_of_extra_cols = list(range(Nan_to_empty_str.shape[1] - 1))                                 # Extra columns caused due to mongodb 
+    Nan_to_empty_str[columns[1]] = np.array(Nan_to_empty_str[list_of_extra_cols]).sum(axis=1)       # Adding rows row wise
+    mongo_df = Nan_to_empty_str.drop(list_of_extra_cols, axis = 1)                                  # Removing extra columns
+    if columns[1] == "Date":
+        mongo_df['Date'] = pd.to_datetime(mongo_df['Date'], dayfirst=True)                          # Converting Date to Datetime
+        mongo_df = mongo_df.sort_values(by='Date', ascending=False)                                 # Sorting by Date
+    mongo_df.columns = columns                                                                      # Renaming Column name
+    mongo_df = mongo_df.dropna()                                                                    # Dropping Null values from mongo (most probably not useful urls)
+    return mongo_df
 """
 ## Example usecase:
 date_db_name = "PetraOil"
@@ -60,7 +61,7 @@ def save_to_mongo(date_db_name:str, collection_db_name:str, data):
         collection = db[collection_db_name]
 
         insert_doc = collection.insert_one(data)
-        print(f"Inserted in Mongodb cloud\nDatabase: {date_db_name}\nCollection: {collection_db_name}")
+        print(f"Inserted in Mongodb Cloud\nDatabase: {date_db_name}\nCollection: {collection_db_name}")
 
     except Exception as e:
         print(e)
